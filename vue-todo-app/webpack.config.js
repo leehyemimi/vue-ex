@@ -1,89 +1,89 @@
-const path = require('path');// ÆÄÀÏÀÌ³ª µð·ºÅÍ¸® °æ·Î¸¦ ´Ù·ç±â À§ÇÑ NodeJS ±âº» ¸ðµâ
-const { merge } = require('webpack-merge');
+const path = require('path')// ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½Î¸ï¿½ ï¿½Ù·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ NodeJS ï¿½âº» ï¿½ï¿½ï¿½
+const { merge } = require('webpack-merge')
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
-//const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
+// const CopyPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = (env, opts) => {
-	const config = {
-		/*resolve: {
+  const config = {
+    /* resolve: {
 			extensions: ['.js', '.vue']
-		},*/
-		// ÆÄÀÏÀ» ÀÐ¾îµéÀÌ±â ½ÃÀÛÇÏ´Â ÁøÀÔ
-		// `__dirname`Àº ÇöÀç ÆÄÀÏÀÇ À§Ä¡¸¦ ¾Ë·ÁÁÖ´Â NodeJS Àü¿ª º¯¼ö
-		entry: {
-			app : path.join(__dirname, 'main.js') //__dirname ÇöÀç ÆÄÀÏÀÇ °æ·Î
-		},
-		// °á°ú¹°(¹øµé)À» ¹ÝÈ¯ÇÏ´Â ¼³Á¤
-		// `[name]`Àº `entry`ÀÇ Key ÀÌ¸§, `app`
-		output : {
-			filename : '[name].js', // app.js
-			path : path.join(__dirname, 'dist')
-		},
-		module: {
-			rules: [
-				{
-					test: /\.vue$/,
-					use: 'vue-loader'
-				},
-				{
-					test: /\.js$/,
-					exclude : /node_modules/,
-					use: 'babel-loader'
-				},
-				{
-					test: /\.css$/,
-					use: [
-						'vue-style-loader',
-						'css-loader',
-						'postcss-loader'
-					]
-				},
-				{
-					test: /\.scss$/,
-					use: [
-						'vue-style-loader',
-						'css-loader',
-						'postcss-loader',
-						'sass-loader'
-					]
-				}
-			]
-		},
-		plugins: [  // ¹øµé¸µ ÈÄ °á°ú¹°ÀÇ Ã³¸® ¹æ½Ä µî ´Ù¾çÇÑ ÇÃ·¯±×ÀÎµéÀ» ¼³Á¤
-			new VueLoaderPlugin(),
-			new HtmlWebpackPlugin({
-				template:path.join(__dirname,'index.html')
-			}),
-			/*new CopyPlugin([
+		}, */
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
+    // `__dirname`ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½Ö´ï¿½ NodeJS ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    entry: {
+      app: path.join(__dirname, 'main.js') // __dirname ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+    },
+    // ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
+    // `[name]`ï¿½ï¿½ `entry`ï¿½ï¿½ Key ï¿½Ì¸ï¿½, `app`
+    output: {
+      filename: '[name].js', // app.js
+      path: path.join(__dirname, 'dist')
+    },
+    module: {
+      rules: [
+        {
+          test: /\.vue$/,
+          use: 'vue-loader'
+        },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: 'babel-loader'
+        },
+        {
+          test: /\.css$/,
+          use: [
+            'vue-style-loader',
+            'css-loader',
+            'postcss-loader'
+          ]
+        },
+        {
+          test: /\.scss$/,
+          use: [
+            'vue-style-loader',
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'
+          ]
+        }
+      ]
+    },
+    plugins: [ // ï¿½ï¿½ï¿½é¸µ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+      new VueLoaderPlugin(),
+      new HtmlWebpackPlugin({
+        template: path.join(__dirname, 'index.html')
+      })
+      /* new CopyPlugin([
 				{
 					from: 'assets/',
 					to: ''
 				}
-			])*/
-		]
-	}
+			]) */
+    ]
+  }
 
-	if (opts.mode === 'development') { //°³¹ß¿ë
-		return merge(config, {
-			// ºôµå ½Ã°£ÀÌ Àû°í, µð¹ö±ëÀÌ °¡´ÉÇÑ ¹æ½Ä
-			devtool: 'eval',
-			devServer: {
-				// ÀÚµ¿À¸·Î ±âº» ºê¶ó¿ìÀú¸¦ ¿ÀÇÂÇÕ´Ï´Ù
-				open: false,
-				// HMR, https://webpack.js.org/concepts/hot-module-replacement/
-				hot: true
-			}
-		})
-	} else if(opts.mode === 'production'){// opts.mode === 'production' //Á¦Ç°¿ë
-		return merge(config, {
-			// ¿ë·®ÀÌ ÀûÀº ¹æ½Ä
-			devtool: 'cheap-module-source-map',
-			plugins: [
-				new CleanWebpackPlugin() // ºôµå(build) Á÷Àü `output.path`(`dist` µð·ºÅÍ¸®) ³» ±âÁ¸ ¸ðµç ÆÄÀÏ »èÁ¦
-			]
-		})
-	}
+  if (opts.mode === 'development') { // ï¿½ï¿½ï¿½ß¿ï¿½
+    return merge(config, {
+      // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+      devtool: 'eval',
+      devServer: {
+        // ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½
+        open: false,
+        // HMR, https://webpack.js.org/concepts/hot-module-replacement/
+        hot: true
+      }
+    })
+  } else if (opts.mode === 'production') { // opts.mode === 'production' //ï¿½ï¿½Ç°ï¿½ï¿½
+    return merge(config, {
+      // ï¿½ë·®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+      devtool: 'cheap-module-source-map',
+      plugins: [
+        new CleanWebpackPlugin() // ï¿½ï¿½ï¿½ï¿½(build) ï¿½ï¿½ï¿½ï¿½ `output.path`(`dist` ï¿½ï¿½ï¿½Í¸ï¿½) ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+      ]
+    })
+  }
 }
